@@ -29,6 +29,10 @@ static char ccache_path[PATH_MAX];
 static char path[PATH_MAX];
 static char sysroot[PATH_MAX];
 
+#ifdef __APPLE__
+	char *program_invocation_short_name = "toolchain-wrapper";
+#endif
+
 /**
  * GCC errors out with certain combinations of arguments (examples are
  * -mfloat-abi={hard|soft} and -m{little|big}-endian), so we have to ensure

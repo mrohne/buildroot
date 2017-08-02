@@ -35,9 +35,10 @@ ifeq ($(BR2_CCACHE_USE_BASEDIR),y)
 TOOLCHAIN_WRAPPER_ARGS += -DBR_CCACHE_BASEDIR='"$(BASE_DIR)"'
 endif
 
+# -Wl,--hash-style=$(TOOLCHAIN_WRAPPER_HASH_STYLE) 
 define TOOLCHAIN_WRAPPER_BUILD
 	$(HOSTCC) $(HOST_CFLAGS) $(TOOLCHAIN_WRAPPER_ARGS) \
-		-s -Wl,--hash-style=$(TOOLCHAIN_WRAPPER_HASH_STYLE) \
+		-s \
 		toolchain/toolchain-wrapper.c \
 		-o $(@D)/toolchain-wrapper
 endef
